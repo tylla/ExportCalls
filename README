@@ -1,12 +1,17 @@
-This app exports all your notes from the notes app (or better the internal database) to a text file with tabulator seperated fields.
+This app exports all your calls from the internal database of the Phone app to a text file with tabulator separated fields.
+This app was created using Garfonso's Export Notes app as a base and applying the main parts of MetaView's Export Call History patch: http://forums.webosnation.com/webos-patches/313011-export-call-history.html which sadly had it's own problems.
 
-This file is saved in the usb partition and can be send as attachement per E-Mail (from the app menu). 
-It should be easy to import that file to Excel. This way one can backup and/or export all the notes from the device and keep them, even if webos goes down or the palm backup server dies someday.
+Below are Garfonso's original notes, which are mostly valid for this app as well (with minor corrections, mostly changed the app name).
+-----------
+This app exports all your calls from the Phone app (or better the internal database) to a text file with tabulator separated fields.
+
+This file is saved in the usb partition and can be sent as attachment per E-Mail (from the app menu). 
+It should be easy to import that file to Excel. This way one can backup and/or export all the calls from the device and keep them, even if webOS goes down or the palm backup server dies someday.
 
 IMPORTANT
 Currently you manually have to run
 
-luna-send -a com.palm.app.notes -n 1 palm://com.palm.db/putPermissions '{"permissions": [{"type": "db.kind", "object": "com.palm.note:1", "caller": "info.mobo.exportnotes.service", "operations": {"read":"allow"}}, {"type": "db.kind", "object": "com.palm.note:1", "caller": "info.mobo.exportnotes.service", "operations": {"read": "allow"}}]}'
+luna-send -a com.palm.app.phone -n 1 palm://com.palm.db/putPermissions '{"permissions": [{"type": "db.kind", "object": "com.palm.phonecall:1", "caller": "hu.tylla.exportcalls.service", "operations": {"read":"allow"}}, {"type": "db.kind", "object": "com.palm.phonecall:1", "caller": "hu.tylla.exportcalls.service", "operations": {"read": "allow"}}]}'
 
 from a root-terminal on the device. This is to set permissions so the service is allowed to read from the database!
 I will try to find a way to automate this step, but until now, I was not successful. :-(
@@ -14,16 +19,16 @@ I will try to find a way to automate this step, but until now, I was not success
 How-To:
 Just press "Do Export" and wait for the spinner to stop spinning and the message "All went well". 
 If you get a "Permission denied"-Error, please execute the command line from above.
-After that hook up the device to an USB port and copy the created file or use "Mail notes" 
-from the app menu and e-mail the notes to yourself.
+After that hook up the device to an USB port and copy the created file or use "Mail Calls" 
+from the app menu and e-mail the calls to yourself.
 
 You can change the filename in the text editfield. But there is no real reason to do so. 
 
 If the service locks up, you'll have close the app and wait a minute or you can try "Reset service" from the app menu.
 
 Versionhistory:
-1.0.0 (2012-10-07)
-- initial release (based on Export Messages app).
+1.0.0 (2016-01-03)
+- initial release (based on Export Notes app).
 
 Pull requests are welcome! :)
 Released under MIT license.

@@ -46,7 +46,7 @@ WelcomeAssistant.prototype.startExport = function (event) {
 				if (f.result.success) {
 					logStatus("Export returned ok");
 					if (f.result.stats) {
-						log("Exported " + f.result.stats.notes + " in file " + config.filename + " with size " + f.result.stats.fileSize);
+						log("Exported " + f.result.stats.calls + " in file " + config.filename + " with size " + f.result.stats.fileSize);
 					}
 				} else {
 					logStatus("Export returned with error.");
@@ -79,7 +79,7 @@ WelcomeAssistant.prototype.startExport = function (event) {
 		this.locked = true;
 		config.subscribe = true;
 		log("Calling service.");
-		future = PalmCall.call("palm://info.mobo.exportnotes.service/", "doExport", config);
+		future = PalmCall.call("palm://hu.tylla.exportcalls.service/", "doExport", config);
 		future.then(this, getResult);
 		keepInTouch = function () {
 			if (this.locked) {

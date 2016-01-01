@@ -1,11 +1,12 @@
 {
-	"id": "info.mobo.exportnotes",
+	"id": "hu.tylla.exportcalls",
 	"version": "1.0.0",
-	"vendor": "Garfonso",
+	"vendor": "Tylla",
+	"vendorurl": "webos.tylla.hu",
 	"type": "web",
 	"plug-ins": false,
 	"main": "index.html",
-	"title": "Export Notes",
+	"title": "Export Calls",
 	"icon": "icon.png",
 	"uiRevision": 2
 }

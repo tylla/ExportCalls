@@ -12,8 +12,8 @@ function AppAssistant(appController) {
 				{
 					permissions: [{
 						type: "db.kind",
-						object: "com.palm.note:1",
-						caller: "info.mobo.exportnotes.service",
+						object: "com.palm.calls:1",
+						caller: "hu.tylla.exportcalls.service",
 						operations: { read: "allow" }
 					}]
 				},
@@ -29,8 +29,8 @@ function email() {
 				parameters: {
 					id: 'com.palm.app.email',
 					params: {
-						'summary':  "Notes",
-						'text':   '<html><body>Notes exported trom your webos device.</body></html>',
+						'summary':  "Calls",
+						'text':   '<html><body>Calls exported trom your webos device.</body></html>',
 						"attachments": [{
 							"fullPath": "/media/internal/" + config.filename,
 							"displayName": config.filename,
@@ -43,7 +43,7 @@ function email() {
 }
 
 //setup menu with email log:
-AppAssistant.prototype.MenuModel = { visible: true, items: [ {label: $L("Mail notes"), command: "do-log-email" }, {label: $L("Reset service"), command: "do-reset-service"}] };
+AppAssistant.prototype.MenuModel = { visible: true, items: [ {label: $L("Mail calls"), command: "do-log-email" }, {label: $L("Reset service"), command: "do-reset-service"}] };
 
 AppAssistant.prototype.handleCommand = function (event) {
 	var stageController = this.controller.getActiveStageController(), currentScene;
@@ -58,7 +58,7 @@ AppAssistant.prototype.handleCommand = function (event) {
 				onChoose: function (value) {
 					if (value === "do") {
 						log("Resetting service.");
-						PalmCall.call("palm://com.palm.mobo.exportnotes.service/", "__quit", {});
+						PalmCall.call("palm://hu.tylla.exportcalls.service/", "__quit", {});
 					}
 				},
 				title: $L("Are you sure?"),

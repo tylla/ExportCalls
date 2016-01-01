@@ -46,7 +46,7 @@ var log = function (logmsg) {
 	console.error(logmsg);
 	try {
 		if (typeof stream === "undefined") {
-			stream = fs.createWriteStream("/media/internal/.info.mobo.exportnotes.log", {flags: "w"});
+			stream = fs.createWriteStream("/media/internal/.hu.tylla.exportcalls.log", {flags: "w"});
 		}
 		stream.write(new Date() + ": " + logmsg + "\n");
 		//stream.end();
