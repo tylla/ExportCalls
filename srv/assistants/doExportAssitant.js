@@ -55,7 +55,7 @@ doExportAssitant.prototype.run = function (outerFuture, subscription) {
 					stats.calls += 1;
 					fileStream.write(line);
 				}
-				//only the first count tells me how many messages there are... 
+				//only the first count tells me how many calls there are... 
 				if (!stats.count) {
 					stats.count = r.count;
 				}
